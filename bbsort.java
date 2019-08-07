@@ -15,16 +15,12 @@ public class bbsort {
     }
     private static void work(int sz) {
         int swap;//bien luu tam
-        boolean sort = false;//neu ko so sort thi la false
+        boolean sort = false;//neu ko co swap thi la false
         Random random = new Random();//obj random
         int[] arr = new int[sz];//khoi tao array voi length sz
         System.out.print("Unsorted array: [");//in ra array luc dau
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(20);//gan 1 gia tri bat ky tu 0 den 20
-            System.out.print(arr[i]);
-            if (i != arr.length - 1) System.out.print(", ");
-            else System.out.println("]");
-        }
+        for (int i = 0; i < arr.length; i++) arr[i] = random.nextInt(20);//gan 1 gia tri bat ky tu 0 den 20
+        show(arr);
         for (int i = 0; i < arr.length - 1; i++) {//bat dau sort
             if (arr[i] > arr[i + 1]) {//neu lon hon thi swap
                 swap = arr[i];
@@ -38,11 +34,13 @@ public class bbsort {
             }
         }
         System.out.print("Sorted array: [");//neu sort = false thi sort xong, in ket qua
-        for (int k = 0; k < arr.length; k++) {
-            System.out.print(arr[k]);
-            if (k != arr.length - 1) System.out.print(", ");
+        show(arr);
+    }
+    private static void show(int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i != arr.length - 1) System.out.print(", ");
             else System.out.println("]");
         }
     }
 }
-
