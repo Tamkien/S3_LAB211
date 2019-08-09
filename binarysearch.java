@@ -32,7 +32,7 @@ public class binarysearch {
                 arr[i + 1] = swap;
                 sort = true;//neu co swap thi sort = true
             }
-            if (i == arr.length - 2 & sort) {//neu xay ra swap
+            if (i == arr.length - 2 && sort) {//neu xay ra swap
                 i = -1;//reset, den vong lap sau i++ thi i=0
                 sort = false;//reset
             }
