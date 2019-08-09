@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*;//test
 public class bbsort {
     public static void main(String[] args) {
         for (; ; ) {//lap vo tan
