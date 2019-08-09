@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*;//.
 public class slsort {
     public static void main(String[] args) {
         for (; ; ) {//lap vo tan
