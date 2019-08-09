@@ -1,5 +1,6 @@
 import java.util.*;
-public class binarysearch{
+
+public class binarysearch {
     public static void main(String[] args) {
         for (; ; ) {//lap vo tan
             try {
@@ -9,12 +10,13 @@ public class binarysearch{
                 System.out.println("Enter search value:");
                 int target = scanner.nextInt();//nhap so can tim
                 if (sz == 0) break;//thoat
-                search(sort(sz), target, 0, sz-1);//buoc tim kiem dau tien, tim all trong arr
+                search(sort(sz), target, 0, sz - 1);//buoc tim kiem dau tien, tim all trong arr
             } catch (Exception e) {//catch loi
                 System.out.println(e);
             }
         }
     }
+
     private static int[] sort(int sz) {
         int swap;//bien luu tam
         boolean sort = false;//neu ko co swap thi la false
@@ -41,18 +43,18 @@ public class binarysearch{
     }
 
     private static void search(int[] arr, int target, int start, int end) {
-        int id = (start+end)/2;//tim middle index
+        int id = (start + end) / 2;//tim middle index
         if (arr[id] != target && end == start) System.out.println("Not Found!");
-        //neu do den cuoi, chi con 1 so, tuc la end bang start, ma target van ko thay, thi la ko co
+            //neu do den cuoi, chi con 1 so, tuc la end bang start, ma target van ko thay, thi la ko co
         else if (arr[id] == target) System.out.println("Found " + target + " at index " + id);//trung thi found luon
-        //neu ko trung, xay ra 2 truong hop, trong ca 2 cases ta deu tim tu so ben canh id ve end/start
-        else if (arr[id] < target) search(arr, target, id+1, end);
-        //tim tu so id+1 den end. Sau buoc nay start tro thanh id +1
-        else if (arr[id] > target) search(arr, target, start, id-1);
+            //neu ko trung, xay ra 2 truong hop, trong ca 2 cases ta deu tim tu so ben canh id ve end/start
+        else if (arr[id] < target) search(arr, target, id + 1, end);
+            //tim tu so id+1 den end. Sau buoc nay start tro thanh id +1
+        else if (arr[id] > target) search(arr, target, start, id - 1);
         //tim tu so start den id - 1. Sau buoc nay end tro thanh id - 1
     }
 
-    private static void show(int[] arr){//method nay de in arr
+    private static void show(int[] arr) {//method nay de in arr
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
             if (i != arr.length - 1) System.out.print(", ");
