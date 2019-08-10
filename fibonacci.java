@@ -1,7 +1,7 @@
 public class fibonacci {
     public static void main(String[] args) {
         System.out.println("The 45 sequence Fibonacci:");
-        for (int i = 2; i < 45; i++) {
+        for (int i = 0; i < 45; i++) {
             System.out.print(calc(i));
             if (i!=44) System.out.print(", ");
         }
