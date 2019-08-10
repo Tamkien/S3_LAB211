@@ -1,13 +1,14 @@
 public class fibonacci {
     public static void main(String[] args) {
         System.out.println("The 45 sequence Fibonacci:");
-        int f0 = 0, f1 = 1, f2;
-        System.out.print("0, 1");
         for (int i = 2; i < 45; i++) {
-            f2 = f0 + f1;
-            f0 = f1;
-            f1 = f2;
-            System.out.print(", " + f2);
+            System.out.print(calc(i));
+            if (i!=44) System.out.print(", ");
         }
+    }
+
+    private static int calc(int i) {
+        if (i<2) return i;
+        else return calc(i-1) + calc(i-2);
     }
 }
