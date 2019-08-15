@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*;//.
 
 public class Equation implements phuongtrinh {
     private static Scanner sc = new Scanner(System.in);
