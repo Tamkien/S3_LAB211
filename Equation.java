@@ -1,4 +1,4 @@
-import java.util.*;//.
+import java.util.*;
 
 public class Equation implements phuongtrinh {
     private static Scanner sc = new Scanner(System.in);
@@ -38,12 +38,21 @@ public class Equation implements phuongtrinh {
             switch (choice) {
                 case 1:
                     ArrayList<Float> c1 = new ArrayList<>();
+                    float a, b;
                     System.out.println("----- Calculate Equation -----");
                     System.out.println("Enter A:");
-                    float a = sc.nextFloat();
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Error! Enter A again:");
+                        sc.next();
+                    }
+                    a = sc.nextFloat();
                     c1.add(a);
                     System.out.println("Enter B:");
-                    float b = sc.nextFloat();
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Error! Enter B again:");
+                        sc.next();
+                    }
+                    b = sc.nextFloat();
                     c1.add(b);
                     if (equation.calculateEquation(a, b) == null) System.out.println("No solutions");
                     else if (equation.calculateEquation(a, b).isEmpty())
@@ -57,15 +66,28 @@ public class Equation implements phuongtrinh {
                     break;
                 case 2:
                     ArrayList<Float> c2 = new ArrayList<>();
+                    float A, B, C;
                     System.out.println("----- Calculate Quadratic Equation -----");
                     System.out.println("Enter A:");
-                    float A = sc.nextFloat();
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Error! Enter A again:");
+                        sc.next();
+                    }
+                    A = sc.nextFloat();
                     c2.add(A);
                     System.out.println("Enter B:");
-                    float B = sc.nextFloat();
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Error! Enter B again:");
+                        sc.next();
+                    }
+                    B = sc.nextFloat();
                     c2.add(B);
                     System.out.println("Enter C:");
-                    float C = sc.nextFloat();
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Error! Enter C again:");
+                        sc.next();
+                    }
+                    C = sc.nextFloat();
                     c2.add(C);
                     if (A == 0) {
                         if (equation.calculateEquation(B, C) == null) System.out.println("No solutions");
@@ -94,6 +116,15 @@ public class Equation implements phuongtrinh {
                 default:
                     System.out.println("Error");
             }
+        }
+    }
+
+    private static void nhap(float a) {
+        try {
+            a = sc.nextFloat();
+        } catch (Exception e) {
+            System.out.println(e);
+            nhap(a);
         }
     }
 
