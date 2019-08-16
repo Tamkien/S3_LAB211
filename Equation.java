@@ -69,7 +69,7 @@ public class Equation implements phuongtrinh {
                     float A, B, C;
                     System.out.println("----- Calculate Quadratic Equation -----");
                     System.out.println("Enter A:");
-                    while (!sc.hasNextFloat()) {
+                    while (!sc.hasNextFloat ()) {
                         System.out.println("Error! Enter A again:");
                         sc.next();
                     }
@@ -116,15 +116,6 @@ public class Equation implements phuongtrinh {
                 default:
                     System.out.println("Error");
             }
-        }
-    }
-
-    private static void nhap(float a) {
-        try {
-            a = sc.nextFloat();
-        } catch (Exception e) {
-            System.out.println(e);
-            nhap(a);
         }
     }
 
