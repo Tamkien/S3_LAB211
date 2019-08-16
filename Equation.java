@@ -34,7 +34,12 @@ public class Equation implements phuongtrinh {
             System.out.println("2. Calculate Quadratic Equation");
             System.out.println("3. Exit");
             System.out.println("\nPlease choose one option:");
-            int choice = sc.nextInt();
+            int choice;
+            while (!sc.hasNext("[123]")) {
+                System.out.println("Error! Choose again:");
+                sc.next();
+            }
+            choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     ArrayList<Float> c1 = new ArrayList<>();
@@ -113,8 +118,6 @@ public class Equation implements phuongtrinh {
                     break;
                 case 3:
                     System.exit(1);
-                default:
-                    System.out.println("Error");
             }
         }
     }
