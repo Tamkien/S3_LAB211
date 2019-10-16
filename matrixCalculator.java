@@ -69,7 +69,7 @@ public class matrixCalculator {
         double[][] result = new double[matrix1.length][matrix2[0].length];
         for (int row = 0; row < result.length; row++)
             for (int col = 0; col < result[0].length; col++) {
-                for (int i = 0; i < result[0].length; i++) {
+                for (int i = 0; i < matrix2.length; i++) {
                     result[row][col] += (matrix1[row][i] * matrix2[i][col]);
                 }
             }
