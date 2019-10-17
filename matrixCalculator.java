@@ -52,7 +52,7 @@ public class matrixCalculator {
                     return input;
                 } else System.out.println("Please choose 1, 2, 3 or 4");
             } catch (NumberFormatException e) {
-                System.out.println("\"Please choose 1, 2, 3 or 4\"");
+                System.out.println("Please choose 1, 2, 3 or 4");
             } catch (Exception e) {
                 System.out.println("Error! Reason: " + e);
             }
