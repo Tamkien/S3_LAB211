@@ -25,11 +25,13 @@ public class numberSystems {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int inputSystem = getSystem("input");
-        int outputSystem = getSystem("output");
-        String inputValue = getInputValue();
-        String result = process(inputSystem, outputSystem, inputValue);
-        print(result);
+        for (; ; ) {
+            int inputSystem = getSystem("input");
+            int outputSystem = getSystem("output");
+            String inputValue = getInputValue();
+            String result = process(inputSystem, outputSystem, inputValue);
+            print(result);
+        }
     }
 
     //Get input, output system
@@ -114,7 +116,7 @@ public class numberSystems {
                             System.out.println("Unnecessary to convert!");
                     }
                 } else {
-                    System.out.println("Input is not a decimal number! Return menu!");
+                    System.out.println("Input is not a Hexadecimal number!");
                     return null;
                 }
             default:
@@ -135,57 +137,71 @@ public class numberSystems {
     }
 
     private static boolean isHexadecimal(String inputValue) {
-        for (int i = 0; i < inputValue.length(); i++)
-            if (((int) inputValue.charAt(i) < 48 || (int) inputValue.charAt(i) > 57) && ((int) inputValue.charAt(i) < 65 || (int) inputValue.charAt(i) > 70))
+        inputValue = inputValue.toUpperCase();
+        for (int i = 0; i < inputValue.length(); i++) {
+            if (!(((int) inputValue.charAt(i) >= 48 && (int) inputValue.charAt(i) <= 57) || ((int) inputValue.charAt(i) >= 65 && (int) inputValue.charAt(i) <= 70))) {
                 return false;
+            }
+        }
         return true;
     }
 
 
     private static String hexToDec(String inputValue) {
         int result = 0;
+        inputValue = inputValue.toUpperCase();
         int length = inputValue.length();
         for (int i = 0; i < length; i++) {
             char thisChar = inputValue.charAt(i);
             int difference;
-            if ((int)thisChar < 60) difference = 48; else difference = 55;
-            System.out.print(((int)thisChar - difference) + "*" + 16 + "^" + (length - i - 1) + " + ");
-            result += ((int)thisChar - difference)* Math.pow(16, length - i - 1);
+            if ((int) thisChar < 60) difference = 48;
+            else difference = 55;
+            System.out.print(((int) thisChar - difference) + "*" + 16 + "^" + (length - i - 1) + " + ");
+            result += ((int) thisChar - difference) * Math.pow(16, length - i - 1);
         }
+        System.out.println();
+        System.out.println(result);
         return Integer.toString(result);
     }
 
     private static String decToBin(String inputValue) {
         StringBuilder result = new StringBuilder();
         int decValue = Integer.parseInt(inputValue);
-        while (decValue !=0){
-            result.append(decValue%2);
+        while (decValue != 0) {
+            System.out.println(decValue + "/ 2 = " + decValue / 2 + " remainder " + decValue % 2);
+            result.append(decValue % 2);
             decValue /= 2;
         }
-         return result.reverse().toString();
+        System.out.println(result.reverse().toString());
+        return result.toString();
     }
 
     private static String decToHex(String inputValue) {
         StringBuilder result = new StringBuilder();
         int decValue = Integer.parseInt(inputValue);
-        while (decValue !=0){
-        int reminder = decValue%16;
+        while (decValue != 0) {
+            int reminder = decValue % 16;
             if (reminder < 10) {
+                System.out.println(decValue + "/ 16 = " + decValue / 16 + " remainder " + reminder);
                 result.append(reminder);
-                decValue /= 16;
+            } else {
+                System.out.println(decValue + "/ 16 = " + decValue/16 + " remainder " + (char)(reminder + 55));
+                result.append((char) (reminder + 55));
             }
-            else {
-                result.append((char)(reminder+55));
-            }
+            decValue /= 16;
         }
-        return result.reverse().toString();    }
+        System.out.println(result.reverse().toString());
+        return result.toString();
+    }
 
     private static String binToDec(String inputValue) {
         int result = 0;
         for (int i = 0; i < inputValue.length(); i++) {
             System.out.print(((inputValue.charAt(i)) - 48) + "*" + 2 + "^" + (inputValue.length() - i - 1) + " + ");
-            result += ((int) (inputValue.charAt(i)) - 48)* Math.pow(2, inputValue.length() - i - 1);
+            result += ((int) (inputValue.charAt(i)) - 48) * Math.pow(2, inputValue.length() - i - 1);
         }
+        System.out.println();
+        System.out.println(result);
         return Integer.toString(result);
     }
 
