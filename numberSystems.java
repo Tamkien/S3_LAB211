@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /*
@@ -25,7 +26,7 @@ public class numberSystems {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        for (; ; ) {
+        for (; ; ){
             int inputSystem = getSystem("input");
             int outputSystem = getSystem("output");
             String inputValue = getInputValue();
@@ -36,14 +37,13 @@ public class numberSystems {
 
     //Get input, output system
     private static int getSystem(String type) {
-        System.out.println("Please choose the base number " + type + ":");
-        System.out.println("1. Binary");
-        System.out.println("2. Decimal");
-        System.out.println("3. Hexadecimal");
         //infinite loops so user must input correctly (a choice) to continue
         for (; ; ) {
             try {
-                System.out.println("Please choose an option:");
+                System.out.println("Please choose the base number " + type + ":");
+                System.out.println("1. Binary");
+                System.out.println("2. Decimal");
+                System.out.println("3. Hexadecimal");
                 int input = Integer.parseInt(scanner.nextLine().trim());
                 if (input == 1 || input == 2 || input == 3) {
                     return input;
@@ -132,7 +132,8 @@ public class numberSystems {
 
     private static boolean isDecimal(String inputValue) {
         for (int i = 0; i < inputValue.length(); i++)
-            if ((int) inputValue.charAt(i) < 48 || (int) inputValue.charAt(i) > 57) return false;
+            if ((int) inputValue.charAt(i) < 48 || (int) inputValue.charAt(i) > 57)
+                return false;
         return true;
     }
 
@@ -148,27 +149,29 @@ public class numberSystems {
 
 
     private static String hexToDec(String inputValue) {
-        int result = 0;
+        System.out.println("Hex to Dec");
+        long result = 0;
         inputValue = inputValue.toUpperCase();
         int length = inputValue.length();
         for (int i = 0; i < length; i++) {
             char thisChar = inputValue.charAt(i);
-            int difference;
+            long difference;
             if ((int) thisChar < 60) difference = 48;
             else difference = 55;
-            System.out.print(((int) thisChar - difference) + "*" + 16 + "^" + (length - i - 1) + " + ");
-            result += ((int) thisChar - difference) * Math.pow(16, length - i - 1);
+            System.out.print(((long) thisChar - difference) + "*" + 16 + "^" + (length - i - 1) + " + ");
+            result += ((long) thisChar - difference) * (long)Math.pow(16, length - i - 1);
         }
         System.out.println();
         System.out.println(result);
-        return Integer.toString(result);
+        return Long.toString(result);
     }
 
     private static String decToBin(String inputValue) {
+        System.out.println("Dec to Bin");
         StringBuilder result = new StringBuilder();
-        int decValue = Integer.parseInt(inputValue);
+        long decValue = Long.parseLong(inputValue);
         while (decValue != 0) {
-            System.out.println(decValue + "/ 2 = " + decValue / 2 + " remainder " + decValue % 2);
+            System.out.println(decValue + " / 2 = " + decValue / 2 + " remainder " + decValue % 2);
             result.append(decValue % 2);
             decValue /= 2;
         }
@@ -177,15 +180,16 @@ public class numberSystems {
     }
 
     private static String decToHex(String inputValue) {
+        System.out.println("Dec to Hex");
         StringBuilder result = new StringBuilder();
-        int decValue = Integer.parseInt(inputValue);
+        long decValue = Long.parseLong(inputValue);
         while (decValue != 0) {
-            int reminder = decValue % 16;
+            long reminder = decValue % 16;
             if (reminder < 10) {
-                System.out.println(decValue + "/ 16 = " + decValue / 16 + " remainder " + reminder);
+                System.out.println(decValue + " / 16 = " + decValue / 16 + " remainder " + reminder);
                 result.append(reminder);
             } else {
-                System.out.println(decValue + "/ 16 = " + decValue/16 + " remainder " + (char)(reminder + 55));
+                System.out.println(decValue + " / 16 = " + decValue / 16 + " remainder " + (char) (reminder + 55));
                 result.append((char) (reminder + 55));
             }
             decValue /= 16;
@@ -195,14 +199,15 @@ public class numberSystems {
     }
 
     private static String binToDec(String inputValue) {
-        int result = 0;
+        System.out.println("Bin to Dec");
+        long result = 0;
         for (int i = 0; i < inputValue.length(); i++) {
             System.out.print(((inputValue.charAt(i)) - 48) + "*" + 2 + "^" + (inputValue.length() - i - 1) + " + ");
             result += ((int) (inputValue.charAt(i)) - 48) * Math.pow(2, inputValue.length() - i - 1);
         }
         System.out.println();
         System.out.println(result);
-        return Integer.toString(result);
+        return Long.toString(result);
     }
 
     private static void print(String result) {
